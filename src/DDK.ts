@@ -67,7 +67,7 @@ function buildDictionary(
     return dict;
 }
 
-export type DreiKitDictionary = ReturnType<typeof buildDictionary>;
+export type DDKDictionary = ReturnType<typeof buildDictionary>;
 
 function setDictionary(dict: typeof dictioanry) {
     dictioanry = dict;
@@ -105,11 +105,11 @@ const Renderer = {
     },
 };
 
-const DreiKit = {
+const DDK = {
     getDictioanry,
     setDictionary,
     buildDictionary,
     Renderer,
 };
 
-export default DreiKit;
+export default DDK;

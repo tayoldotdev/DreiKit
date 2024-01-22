@@ -1,12 +1,12 @@
 {
-    "name": "@repo/DreiKit",
+    "name": "@repo/DreiDKit",
     "version": "0.1.0",
     "description": "",
     "scripts": {
-        "dev": "echo DreiKit"
+        "dev": "echo DreiDKit"
     },
     "exports": {
-        "./lib": "./src/DreiKit.ts",
+        "./lib": "./src/DDK.ts",
         "./ui": "./src/components/Model.tsx",
         "./url": "./src/URLQueryParser.ts",
         "./mac": "./src/ModelAssemblyConsole.ts"
