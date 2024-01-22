@@ -2,7 +2,7 @@ import { type ReadonlyURLSearchParams } from 'next/navigation';
 import { type z } from 'zod';
 import toast from 'react-hot-toast';
 
-import { type RouterPakcage, type AssemblyModel } from './ModelAssemblyConsole';
+import { type RouterPackage, type AssemblyModel } from './ModelAssemblyConsole';
 
 export type AssemblyRecord<T extends AssemblyModel> = Record<
     keyof T,
@@ -14,7 +14,7 @@ export type Parser<T extends string | symbol, P extends AssemblyModel> = Record<
 >;
 
 export function mutate<T extends AssemblyModel, L extends string>(
-    RP: RouterPakcage<L>,
+    RP: RouterPackage<L>,
     configuration: keyof T,
     value: string,
 ) {
