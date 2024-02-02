@@ -6,10 +6,10 @@
         "dev": "echo DreiDKit"
     },
     "exports": {
-        "./lib": "./src/DDK.ts",
+        "./core": "./src/core/index.ts",
+        "./assembly": "./src/assembly/index.ts",
         "./ui": "./src/components/Model.tsx",
-        "./url": "./src/URLQueryParser.ts",
-        "./mac": "./src/ModelAssemblyConsole.ts"
+        "./url": "./src/url/index.ts"
     },
     "keywords": [],
     "author": "",

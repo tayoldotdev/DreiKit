@@ -1,4 +1,4 @@
-import { NotUndefined } from './Assert';
+import { NotUndefined } from '../Assert';
 import { elementExists, hide, show } from './Renderer';
 
 import type { Object3DEventMap, Object3D } from 'three';
@@ -105,11 +105,9 @@ const Renderer = {
     },
 };
 
-const DDK = {
+export const DDK = {
     getDictioanry,
     setDictionary,
     buildDictionary,
     Renderer,
-};
-
-export default DDK;
+} as const;
