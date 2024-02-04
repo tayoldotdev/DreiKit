@@ -39,8 +39,6 @@ function Model({ url, grapher: [, setGraph], preprocessor }: ModelProps) {
         const graph =
             gltf.scene.children[0]?.children[0]?.children[0]?.children[0]?.children;
 
-        console.log(graph)
-
         if (graph === undefined) {
             throw new Error(
                 `Something wrong with model GRAPH. Check it's implementation`,
