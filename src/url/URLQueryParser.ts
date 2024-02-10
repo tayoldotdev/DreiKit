@@ -5,10 +5,12 @@ import toast from 'react-hot-toast';
 import {  type AssemblyModel } from '../assembly';
 import { type RouterPackage, type LexiconDevil } from '../core';
 
+/** @deprecated */
 export type AssemblyRecord<T extends AssemblyModel> = Record<
     keyof T,
     z.ZodSchema
 >;
+/** @deprecated */
 export type Parser<T extends string | symbol, P extends AssemblyModel> = Record<
     T,
     AssemblyRecord<P>
@@ -27,6 +29,7 @@ export function mutate<T extends AssemblyModel, L extends string>(
     RP.router.push(`${RP.pathname}${query}`);
 }
 
+/** @deprecated */
 export function consume<
     P extends AssemblyModel,
     T extends Parser<string | symbol, P>,
