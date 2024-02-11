@@ -16,12 +16,20 @@ export type Parser<T extends string | symbol, P extends AssemblyModel> = Record<
     AssemblyRecord<P>
 >;
 
+/**
+ *  Function that mutates page url with search params that corispond to picked configurations
+ *  - when 'none' is passed as 'value' the search params gets removed from the url
+ */ 
 export function mutate<T extends AssemblyModel, L extends string>(
     RP: RouterPackage<L>,
     configuration: keyof T,
     value: string,
 ) {
-    RP.mutSearchParams.set(configuration as string, value);
+    if (value !== 'none') {
+        RP.mutSearchParams.set(configuration as string, value);
+    } else {
+        RP.mutSearchParams.delete(configuration as string);
+    }
 
     const search = RP.mutSearchParams.toString();
     const query = search ? `?${search}` : '';
