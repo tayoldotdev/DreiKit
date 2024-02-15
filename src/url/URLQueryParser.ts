@@ -4,6 +4,23 @@ import toast from 'react-hot-toast';
 
 import {  type AssemblyModel } from '../assembly';
 import { type RouterPackage, type LexiconDevil } from '../core';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+
+export function mutateSearchParameters(router: AppRouterInstance, pathname: string, searchParams: URLSearchParams, configuration: string, value: string) {
+    if (value !== 'none') {
+        searchParams.set(configuration as string, value);
+    } else {
+        searchParams.delete(configuration as string);
+    }
+
+    const search = searchParams.toString();
+    const query = search ? `?${search}` : '';
+
+    router.push(`${pathname}${query}`);
+}
+
+
+//----------------------------------------------------------------------------------------------
 
 /** @deprecated */
 export type AssemblyRecord<T extends AssemblyModel> = Record<
@@ -17,6 +34,7 @@ export type Parser<T extends string | symbol, P extends AssemblyModel> = Record<
 >;
 
 /**
+ * @deprecated
  *  Function that mutates page url with search params that corispond to picked configurations
  *  - when 'none' is passed as 'value' the search params gets removed from the url
  */ 
@@ -110,3 +128,9 @@ export const URL_QUERY_PARSER = {
     consume,
     mutate,
 } as const;
+
+export const DDK_URL = {
+    searchParams: {
+        mutate: mutateSearchParameters,
+    },
+};
