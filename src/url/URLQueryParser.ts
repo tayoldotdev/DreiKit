@@ -38,8 +38,8 @@ export type Parser<T extends string | symbol, P extends AssemblyModel> = Record<
  *  Function that mutates page url with search params that corispond to picked configurations
  *  - when 'none' is passed as 'value' the search params gets removed from the url
  */ 
-export function mutate<T extends AssemblyModel, L extends string>(
-    RP: RouterPackage<L>,
+export function mutate<T extends AssemblyModel>(
+    RP: RouterPackage,
     configuration: keyof T,
     value: string,
 ) {
@@ -124,6 +124,7 @@ export function consume<
     });
 }
 
+/** @deprecated */
 export const URL_QUERY_PARSER = {
     consume,
     mutate,

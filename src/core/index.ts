@@ -1,12 +1,12 @@
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
+/** @deprecated */
 export type LexiconDevil<K> = Map<K, { value: string; isDefault: boolean }>;
 
-export type RouterPackage<L extends string> = {
+export type RouterPackage = {
     router: AppRouterInstance;
     pathname: string;
     mutSearchParams: URLSearchParams;
-    lang: L,
 };
 
 export * from './DDK';
