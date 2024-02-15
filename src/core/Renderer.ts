@@ -9,8 +9,16 @@ export const show = (
     if (result === undefined) {
         // throw new Error(`404: '${key}' not found in model dictionary!`);
         console.warn(`404: '${key}' not found in model dictionary!`);
+        return {
+            status: 404,
+            msg: `[404]: '${key}' not found in model dictionary!`
+        }
     } else {
         result.visible = true;
+        return {
+            status: 200,
+            msg: 'OK'
+        }
     }
 };
 
@@ -23,8 +31,16 @@ export const hide = (
     if (result === undefined) {
         // throw new Error(`404: '${key}' not found in model dictionary!`);
         console.warn(`404: '${key}' not found in model dictionary!`);
+        return {
+            status: 404,
+            msg: `[404]: '${key}' not found in model dictionary!`
+        }
     } else {
         result.visible = false;
+        return {
+            status: 200,
+            msg: 'OK'
+        }
     }
 };
 
