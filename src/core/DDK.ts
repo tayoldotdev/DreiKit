@@ -105,8 +105,7 @@ const Renderer = {
     },
     hideAll() {
         dictioanry.forEach((entry) => {
-            console.log('e', entry);
-            hide(dictioanry, entry.name);
+            entry.visible = false;
         });
     },
     exists(element: string) {
