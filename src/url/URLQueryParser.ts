@@ -19,7 +19,17 @@ export function mutateSearchParameters(router: AppRouterInstance, pathname: stri
     router.push(`${pathname}${query}`);
 }
 
+export function deleteOne(router: AppRouterInstance, pathname: string, searchParams: URLSearchParams, configuration: string) {
+    searchParams.delete(configuration);
+
+    const search = searchParams.toString();
+    const query = search ? `?${search}` : '';
+
+    router.push(`${pathname}${query}`);
+}
+
 export function deleteMany(router: AppRouterInstance, pathname: string, searchParams: URLSearchParams, configuration: string[]) {
+
     for (let i = 0; i < configuration.length; ++i) {
         searchParams.delete(configuration[i] as string);
     }
@@ -139,6 +149,7 @@ export const URL_QUERY_PARSER = {
 export const DDK_URL = {
     searchParams: {
         mutate: mutateSearchParameters,
+        deleteOne: deleteOne,
         deleteMany: deleteMany,
     },
 };
