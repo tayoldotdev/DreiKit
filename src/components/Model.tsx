@@ -18,7 +18,7 @@ export type Grapher = [
  * @param {Function} function that can be used to rename 3D model elements  
  * @param {Object}   3D element object reference 
  */
-export type Preprocessor = (upadteKey: (oldKey: string, newKey: string) => boolean, element: Object3D<Object3DEventMap>) => void; 
+export type Preprocessor = (upadteKey: (oldKey: string, newKey: string) => boolean, element: Object3D<Object3DEventMap>) => void;
 
 /**
  * @type {Object} ModelProps
