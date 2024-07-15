@@ -2,7 +2,7 @@ import { type ReadonlyURLSearchParams } from 'next/navigation';
 import { type z } from 'zod';
 import toast from 'react-hot-toast';
 
-import {  type AssemblyModel } from '../assembly';
+import { type AssemblyModel } from '../assembly';
 import { type RouterPackage, type LexiconDevil } from '../core';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
@@ -42,18 +42,15 @@ export function deleteMany(router: AppRouterInstance, pathname: string, searchPa
 
 //----------------------------------------------------------------------------------------------
 
-/** @deprecated */
 export type AssemblyRecord<T extends AssemblyModel> = Record<
     keyof T,
     z.ZodSchema
 >;
-/** @deprecated */
 export type Parser<T extends string | symbol, P extends AssemblyModel> = Record<
     T,
     AssemblyRecord<P>
 >;
 
-/** @deprecated */ 
 export function mutate<T extends AssemblyModel>(
     RP: RouterPackage,
     configuration: keyof T,
@@ -71,7 +68,6 @@ export function mutate<T extends AssemblyModel>(
     RP.router.push(`${RP.pathname}${query}`);
 }
 
-/** @deprecated */
 export function consume<
     P extends AssemblyModel,
     T extends Parser<string | symbol, P>,
@@ -140,7 +136,6 @@ export function consume<
     });
 }
 
-/** @deprecated */
 export const URL_QUERY_PARSER = {
     consume,
     mutate,

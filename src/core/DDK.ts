@@ -86,7 +86,6 @@ const Renderer = {
             show(dictioanry, element.toLowerCase());
         }
     },
-    /** @deprecated */
     show(elements: string[] | readonly string[]) {
         for (const element of elements) {
             show(dictioanry, element.toLowerCase());
