@@ -36,8 +36,7 @@ function Model({ url, grapher: [, setGraph], preprocessor }: ModelProps) {
     const gltf = useGLTF(url, true, true);
 
     useEffect(() => {
-        const graph =
-            gltf.scene.children[0]?.children[0]?.children[0]?.children;
+        const graph = gltf.scene.children[0]?.children[0]?.children[0]?.children;
 
         if (graph === undefined) {
             throw new Error(
