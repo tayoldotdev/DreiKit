@@ -8,5 +8,13 @@ export type RouterPackage = {
     searchParams: URLSearchParams;
 };
 
+export function createRouterPackage(router: AppRouterInstance, pathname: string, mut_search_params: URLSearchParams): RouterPackage {
+    return {
+        router,
+        pathname,
+        searchParams: mut_search_params,
+    };
+}
+
 export * from './DDK';
 export type * from './DDK';

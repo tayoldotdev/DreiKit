@@ -69,12 +69,12 @@ export function consume<
 >(
     PARSERS: T,
     configuration: P,
-    searchParams: ReadonlyURLSearchParams,
+    mut_search_params: URLSearchParams,
     LD: LexiconDevil<keyof P>,
 ) {
     let cfgs = Object.keys(configuration).reduce((acc, c) => acc + ' ' + c);
-    if (searchParams.size > 0) {
-        searchParams.forEach((param, key) => {
+    if (mut_search_params.size > 0) {
+        mut_search_params.forEach((param, key) => {
             cfgs = cfgs.replace(key, '');
             const parser = PARSERS[configuration.model];
             if (parser === undefined) {
