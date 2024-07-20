@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
-import { useGLTF } from '@react-three/drei';
+import { useGLTF, } from '@react-three/drei';
 
-import type { Object3D, Object3DEventMap } from 'three';
-
+import { Object3D, WebGLRenderer, type Object3DEventMap } from 'three';
+import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader.js'
+import { REVISION } from 'three'
+import { useThree } from '@react-three/fiber';
+import WebGPURenderer from 'three/examples/jsm/renderers/webgpu/WebGPURenderer.js';
 
 /**
  *  Indexed 3D model elements state managmnet {simmilar to useState} 
@@ -33,10 +36,17 @@ interface ModelProps {
  * JSX component that can be used to put a 3D model on a  webpage
  */
 function Model({ url, grapher: [, setGraph], preprocessor }: ModelProps) {
-    const gltf = useGLTF(url, true, true);
+
+    const gltf = useGLTF(url, false, true, (loader) => {
+        const THREE_PATH = `https://unpkg.com/three@0.${REVISION}.x`
+        const ktx2Loader = new KTX2Loader().setTranscoderPath(`${THREE_PATH}/examples/jsm/libs/basis/`)
+        loader.setKTX2Loader(ktx2Loader);
+    });
 
     useEffect(() => {
         const graph = gltf.scene.children[0]?.children[0]?.children[0]?.children;
+
+        console.log(gltf.scene);
 
         if (graph === undefined) {
             throw new Error(
