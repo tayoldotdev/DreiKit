@@ -30,16 +30,17 @@ interface ModelProps {
     url: string;
     grapher: Grapher,
     preprocessor?: Preprocessor,
+    gl: WebGLRenderer,
 };
 
 /**
  * JSX component that can be used to put a 3D model on a  webpage
  */
-function Model({ url, grapher: [, setGraph], preprocessor }: ModelProps) {
-
+function Model({ url, gl, grapher: [, setGraph], preprocessor }: ModelProps) {
     const gltf = useGLTF(url, false, true, (loader) => {
         const THREE_PATH = `https://unpkg.com/three@0.${REVISION}.x`
         const ktx2Loader = new KTX2Loader().setTranscoderPath(`${THREE_PATH}/examples/jsm/libs/basis/`)
+        ktx2Loader.detectSupport(gl);
         loader.setKTX2Loader(ktx2Loader);
     });
 
