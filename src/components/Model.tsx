@@ -2,10 +2,8 @@ import { useEffect } from 'react';
 import { useGLTF, } from '@react-three/drei';
 
 import { Object3D, WebGLRenderer, type Object3DEventMap } from 'three';
-import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader.js'
 import { REVISION } from 'three'
-import { useThree } from '@react-three/fiber';
-import WebGPURenderer from 'three/examples/jsm/renderers/webgpu/WebGPURenderer.js';
+import { KTX2Loader } from 'three-stdlib';
 
 /**
  *  Indexed 3D model elements state managmnet {simmilar to useState} 
@@ -40,8 +38,7 @@ function Model({ url, gl, grapher: [, setGraph], preprocessor }: ModelProps) {
     const gltf = useGLTF(url, false, true, (loader) => {
         const THREE_PATH = `https://unpkg.com/three@0.${REVISION}.x`
         const ktx2Loader = new KTX2Loader().setTranscoderPath(`${THREE_PATH}/examples/jsm/libs/basis/`)
-        ktx2Loader.detectSupport(gl);
-        loader.setKTX2Loader(ktx2Loader);
+        loader.setKTX2Loader(ktx2Loader.detectSupport(gl));
     });
 
     useEffect(() => {
