@@ -4,6 +4,12 @@ export const show = (
     dictioanry: Map<string, Object3D<Object3DEventMap>>,
     key: string,
 ) => {
+    if (key.length == 0) {
+        return {
+            status: 200,
+            msg: "skippiong key `''`"
+        };
+    };
     const result = dictioanry.get(key);
 
     if (result === undefined) {
